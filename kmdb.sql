@@ -134,6 +134,10 @@
 -- TODO!
 
 
+
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS role;
+
 CREATE TABLE movie (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
@@ -148,3 +152,23 @@ CREATE TABLE role (
     first_name TEXT,
     last_name TEXT
 );
+
+--INSERT INTO movie (title,year,mpaa_rating,studio)
+--VALUES ('Batman Begins','2005','PG-13','Warner Bros.');
+
+--INSERT INTO movie (title,year,mpaa_rating,studio)
+--VALUES ('The Dark Knight','2008','PG-13','Warner Bros.');
+
+--INSERT INTO movie (title,year,mpaa_rating,studio)
+--VALUES ('The Dark Knight Rises','2012','PG-13','Warner Bros.');
+
+INSERT INTO students (
+    first_name,
+    last_name,
+    email
+)
+Values (
+    "Jane"
+    "Doe"
+    "jane@example.com"
+)
