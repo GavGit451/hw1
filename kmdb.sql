@@ -26,6 +26,8 @@
 --   to an app and typically does not have a corresponding database table.
 
 
+
+
 -- Deliverables
 -- 
 -- There are three deliverables for this assignment, all delivered via
@@ -130,3 +132,19 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+
+
+CREATE TABLE movie (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year INTEGER,
+    mpaa_rating TEXT,
+    studio TEXT
+);
+
+CREATE TABLE role (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    first_name TEXT,
+    last_name TEXT
+);
