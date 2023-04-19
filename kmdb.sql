@@ -120,6 +120,10 @@
 .print "======"
 .print ""
 
+SELECT title,year,mpaa_rating,studio
+FROM movie;
+
+
 -- The SQL statement for the movies output
 -- TODO!
 
@@ -129,6 +133,8 @@
 .print "========"
 .print ""
 
+SELECT title,character
+FROM movie_cast INNER JOIN movie ON movie_cast.id = movie.id;
 
 -- The SQL statement for the cast output
 -- TODO!
@@ -136,7 +142,8 @@
 
 
 DROP TABLE IF EXISTS movie;
-DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS movie_cast;
 
 CREATE TABLE movie (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -146,29 +153,61 @@ CREATE TABLE movie (
     studio TEXT
 );
 
-CREATE TABLE role (
+CREATE TABLE person (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     movie_id INTEGER,
     first_name TEXT,
-    last_name TEXT
+    last_name TEXT,
+    character TEXT
 );
 
---INSERT INTO movie (title,year,mpaa_rating,studio)
---VALUES ('Batman Begins','2005','PG-13','Warner Bros.');
+CREATE TABLE movie_cast (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    person_id INTEGER,
+    character TEXT
+);
 
---INSERT INTO movie (title,year,mpaa_rating,studio)
---VALUES ('The Dark Knight','2008','PG-13','Warner Bros.');
+--Movies
 
---INSERT INTO movie (title,year,mpaa_rating,studio)
---VALUES ('The Dark Knight Rises','2012','PG-13','Warner Bros.');
+INSERT INTO movie (title,year,mpaa_rating,studio)
+VALUES ('Batman Begins','2005','PG-13','Warner Bros.');
 
-INSERT INTO students (
-    first_name,
-    last_name,
-    email
-)
-Values (
-    "Jane"
-    "Doe"
-    "jane@example.com"
-)
+INSERT INTO movie (title,year,mpaa_rating,studio)
+VALUES ('The Dark Knight','2008','PG-13','Warner Bros.');
+
+INSERT INTO movie (title,year,mpaa_rating,studio)
+VALUES ('The Dark Knight Rises','2012','PG-13','Warner Bros.');
+
+--Cast
+
+INSERT INTO person (first_name,last_name,character) VALUES
+    ('Christian','Bale','Bruce Wayne'),
+    ('Katie','Homes','Rachel Dawes'),
+    ('Liam','Neeson','Ras Al Ghul'),
+    ('Heath','Ledger','Joker'),
+    ('Aaron','Eckhart','Harvey Dent'),
+    ('Michael ','Caine','Alfred'),
+    ('Michael ','Caine','Alfred'),
+    ('Maggie','Gyllenhaal','Rachel Dawes'),
+    ('Gary ','Oldman','Commissioner Gordon'),
+    ('Tom','Hardy','Bane'),
+    ('Joseph','Gordon-Levitt','John Blake'),
+    ('Anne','Hathaway','Selina Kyle');
+
+INSERT INTO movie_cast (movie_id,person_id,character) VALUES
+    ('1','1','Bruce Wayne'),
+    ('2','1','Bruce Wayne'),
+    ('3','1','Bruce Wayne'),
+    ('1','2','Rachel Dawes'),
+    ('1','3','Ras Al Ghul'),
+    ('1','4','Joker'),
+    ('1','5','Harvey Dent'),
+    ('1','6','Alfred'),
+    ('2','6','Alfred'),
+    ('2','7','Rachel Dawes'),
+    ('1','8','Commissioner Gordon'),
+    ('2','8','Commissioner Gordon'),
+    ('3','9','Bane'),
+    ('3','10','John Blake'),
+    ('3','11','Selina Kyle');
